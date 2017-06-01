@@ -10,4 +10,6 @@ I built this version of Connect Four using HTML, CSS, JavaScript, and the jQuery
 
 MVP:
 -clear winner
--smooth game player
+-players alternate turns
+-checkers are different colors and
+-display properly
