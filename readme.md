@@ -6,6 +6,7 @@ Drop one checker at a time into an open space on the board.  The goal is to line
 
 Technologies used:
 I built this version of Connect Four using HTML, CSS, JavaScript, and the jQuery library.
+The code was written in text editor Atom, versioned in Git using Terminal, and kept online at GitHub.com.
 
 
 MVP:
