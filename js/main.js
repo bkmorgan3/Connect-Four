@@ -79,12 +79,14 @@ function weHaveAWinner(){
   lockBoard();
 }
 
+function lockBoard(){
+  $checker.off('click')
+}
 // checks for horizontal wins
 function checkHorizontalWin(row, column){
   numInARow = 1
   currentRow = row
   currentColumn = column
-
   // check for match horizontal/left:
   // Check one over to the left:
   if (data[currentRow][currentColumn -1] === players.currentPlayer && currentColumn -1 >= 0  ){
@@ -94,11 +96,15 @@ function checkHorizontalWin(row, column){
       console.log(numInARow + " in a row")
 
       // Check next one over to the left or right:
-      if (data[currentRow][currentColumn -2 ] === players.currentPlayer && currentColumn -2 >= 0  ){
+      if (data[currentRow][currentColumn -2] === players.currentPlayer && currentColumn -2 >= 0  ){
         numInARow++
         console.log(numInARow + " in a row")
-        if(data[currentRow][currentColumn -3 ] === players.currentPlayer && currentColumn -3 >= 0 ){
+        if(data[currentRow][currentColumn -3] === players.currentPlayer && currentColumn -3 >= 0 ){
             weHaveAWinner();
+            if(data[currentRow][currentColumn + 1]=== players.currentPlayer && currentColumn + 1 <7){
+              numInARow++
+              console.log(numInARow + ' in a row');
+            }
         }
       }
   }
