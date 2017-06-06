@@ -16,7 +16,6 @@ var players = {
   player2: 'black'
 }
 
-
 // settting the first turn to player 1
 players.currentPlayer = players.player1
 
@@ -36,35 +35,32 @@ function nextPlayer(){
 
 
 function handleClick(){
-  $(this).addClass('filled');
 
   var row = $(this).parent().parent().data("row")
   var column = $(this).parent().data("column")
   console.log("column", column)
   console.log("row", row)
   data[row][column] = players.currentPlayer
-  console.log(data)
-
+  console.log('data',data)
 
   //sets color of checker to be played according to current player
   if (players.currentPlayer == players.player1) {
     $(this).css('backgroundColor', players.player1);
-    // console.log('first');
   }
 
   if (players.currentPlayer == players.player2) {
     $(this).css('backgroundColor', players.player2);
     $(this).addClass('filled')
-    // console.log('second')
   }
   // function to call the next player
   nextPlayer();
+  $(this).off('click');
 }
 
 
 
 function resetGame(){
-  $checker. css('backgroundColor', 'white');
+  $checker.css('backgroundColor', 'white');
 }
 
 var $reset = $('#reset');
