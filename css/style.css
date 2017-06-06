@@ -2,6 +2,13 @@ body {
   background: -webkit-linear-gradient(to right, #A43931, #1D4350);
   background: linear-gradient(to right, #A43931, #1D4350);
 }
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 48px;
+  color: #42b0f4;
+}
 .board {
   width: 770px;
   height: 660px;

@@ -4,77 +4,79 @@
     <meta charset="utf-8">
     <title>Connect Four</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.js"
       integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
       crossorigin="anonymous"></script>
   </head>
   <body>
+      <h1>Connect Four Together</h1>
+        <div class="board">
 
-    <div class="board">
+          <div class="row" data-row="0">
+            <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
+            <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
+            <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
+            <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
+            <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
+            <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
+            <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
+          </div>
 
-      <div class="row" data-row="0">
-        <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
-        <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
-        <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
-        <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
-        <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
-        <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
-        <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
-      </div>
+          <div class="row" data-row="1">
+            <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
+            <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
+            <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
+            <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
+            <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
+            <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
+            <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
+          </div>
 
-      <div class="row" data-row="1">
-        <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
-        <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
-        <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
-        <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
-        <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
-        <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
-        <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
-      </div>
+          <div class="row" data-row="2">
+            <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
+            <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
+            <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
+            <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
+            <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
+            <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
+            <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
+          </div>
 
-      <div class="row" data-row="2">
-        <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
-        <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
-        <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
-        <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
-        <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
-        <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
-        <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
-      </div>
+          <div class="row" data-row="3">
+            <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
+            <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
+            <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
+            <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
+            <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
+            <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
+            <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
+          </div>
 
-      <div class="row" data-row="3">
-        <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
-        <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
-        <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
-        <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
-        <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
-        <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
-        <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
-      </div>
-
-      <div class="row" data-row="4">
-        <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
-        <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
-        <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
-        <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
-        <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
-        <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
-        <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
-      </div>
+          <div class="row" data-row="4">
+            <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
+            <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
+            <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
+            <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
+            <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
+            <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
+            <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
+          </div>
 
 
-      <div class="row" data-row="5">
-        <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
-        <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
-        <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
-        <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
-        <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
-        <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
-        <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
-      </div>
+          <div class="row" data-row="5">
+            <div class="grid col-1" data-column="0"><div class="open checker"></div></div>
+            <div class="grid col-2" data-column="1"><div class="open checker"></div></div>
+            <div class="grid col-3" data-column="2"><div class="open checker"></div></div>
+            <div class="grid col-4" data-column="3"><div class="open checker"></div></div>
+            <div class="grid col-5" data-column="4"><div class="open checker"></div></div>
+            <div class="grid col-6" data-column="5"><div class="open checker"></div></div>
+            <div class="grid col-7" data-column="6"><div class="open checker"></div></div>
+          </div>
 
-</div>
+    </div>
   <button id="reset">Reset</button>
   <script src="./js/main.js"></script>
 
