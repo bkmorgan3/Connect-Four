@@ -1,5 +1,5 @@
 // console.log('bk');
-
+// -----------VARIABLES--------------------
 // the game board representation
 var data = [
   [0, 0, 0, 0, 0, 0, 0],
@@ -21,7 +21,6 @@ players.currentPlayer = players.player1
 
 // selecting the spot tht will represent the checkers, and adding clicklistener to each
 var $checker = $('.checker');
-// console.log($checker);
 $checker.on('click', handleClick);
 
 // the reset button and click listener
@@ -37,9 +36,7 @@ function nextPlayer(){
   }
 }
 
-
 function handleClick(){
-
   var row = $(this).parent().parent().data("row")
   var column = $(this).parent().data("column")
   console.log("column", column)
@@ -61,6 +58,7 @@ function handleClick(){
   checkHorizontalWinR(row, column)
   checkHorizontalWinL(row, column)
   checkVerticalWinner(row, column)
+  checkDownwardWinner(row,column)
   // function to call the next player
   nextPlayer();
   $(this).off('click');
@@ -110,15 +108,15 @@ function checkHorizontalWinR(row, column){
   }
 
 function checkHorizontalWinL(row, column){
-  if(data[currentRow][currentColumn +1]=== players.currentPlayer && currentColumn +1 >= 0){
+  if(data[currentRow][currentColumn +1]=== players.currentPlayer && currentColumn +1 >= 0 && currentColumn+1 <=7){
     numInARow++
     checkFourinRow(numInARow)
     console.log(numInARow + ' in a row');
-    if(data[currentRow][currentColumn + 2] === players.currentPlayer && currentColumn +2 >= 0){
+    if(data[currentRow][currentColumn + 2] === players.currentPlayer && currentColumn +2 >= 0 && currentColumn+2 <=7){
       numInARow++
       checkFourinRow(numInARow)
       console.log(numInARow + ' in a row');
-      if(data[currentRow][currentColumn + 3] === players.currentPlayer && currentColumn +3 >= 0){
+      if(data[currentRow][currentColumn + 3] === players.currentPlayer && currentColumn +3 >= 0 && currentColumn+3 <=7){
         numInARow++
         checkFourinRow(numInARow)
       }
@@ -126,17 +124,50 @@ function checkHorizontalWinL(row, column){
   }
 }
 
+// use same code as Horizontal L and R but change the row to +1 and at current colum at end use row.
+function checkVerticalWinner(row, column){
+  numInARow = 1
+  currentRow = row
+  currentColumn = column
+
+  if(currentRow+1 <=5 && data[currentRow+1][currentColumn] === players.currentPlayer && currentRow +1 >=0){
+    numInARow++;
+    checkFourinRow(numInARow);
+    console.log(numInARow +  ' in a row');
+    if(currentRow+2 <=5 && data[currentRow+2][currentColumn] === players.currentPlayer && currentRow +2 >=0){
+      numInARow++;
+      checkFourinRow(numInARow);
+      console.log(numInARow + ' in a row');
+      if(currentRow+3 <=5 && data[currentRow+3][currentColumn] === players.currentPlayer && currentRow +3 >=0){
+        numInARow++;
+        checkFourinRow(numInARow);
+      };
+    };
+  };
+}
+function checkDownwardWinner(row,column){
+  numInARow = 1
+  currentRow = row
+  currentColumn = column
+
+  if(currentRow -1 >= 0 && data[currentRow -1][currentColumn] === players.currentPlayer && currentRow -1 <=5){
+    numInARow++
+    checkFourinRow(numInARow);
+    console.log(numInARow + ' in a row');
+    if(currentRow -2 >=0 && data[currentRow -2][currentColumn] === players.currentPlayer && currentRow -2<=5){
+      numInARow++
+      checkFourinRow(numInARow);
+      console.log(numInARow + ' in a row');
+      if(currentRow -3 >=0 && data[currentRow -3][currentColumn] === players.currentPlayer && currentRow -3 <=5){
+        numInARow++
+        checkFourinRow(numInARow);
+      }
+    }
+  }
+}
 function checkFourinRow(numInARow){
   if(numInARow >= 4 ){
     weHaveAWinner();
-  }
-}
-// use same code as Horizontal L and R but change the row to +1 and at current colum at end use row.
-function checkVerticalWinner(row, column){
-  if(data[currentRow +1][currentColumn] === players.currentPlayer && currentRow +1 >=0){
-    numInARow++
-    checkFourinRow()
-    console.log(numInARow +  ' in a row')
   }
 }
 
