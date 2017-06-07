@@ -15,7 +15,7 @@ var players = {
   player1: 'red',
   player2: 'black'
 }
-
+var numInARow;
 // settting the first turn to player 1
 players.currentPlayer = players.player1
 
@@ -58,7 +58,8 @@ function handleClick(){
     $(this).addClass('filled')
   }
 
-  checkHorizontalWin(row, column)
+  checkHorizontalWinR(row, column)
+  checkHorizontalWinL(row, column)
   checkVerticalWinner(row, column)
   // function to call the next player
   nextPlayer();
@@ -70,12 +71,13 @@ function handleClick(){
 
 function resetGame(){
   $checker.css('backgroundColor', 'white');
+  data = data;
 }
 
 
 // once win conditons are met this will display winner and lock board
 function weHaveAWinner(){
-  var $h1 = $('h1').html(players.currentPlayer + ' wins !!!');
+  var $h1 = $('h1').html(players.currentPlayer + ' wins !!!').css('text-transform', 'capitalize');
   lockBoard();
 }
 
@@ -83,7 +85,7 @@ function lockBoard(){
   $checker.off('click')
 }
 // checks for horizontal wins
-function checkHorizontalWin(row, column){
+function checkHorizontalWinR(row, column){
   numInARow = 1
   currentRow = row
   currentColumn = column
@@ -92,42 +94,50 @@ function checkHorizontalWin(row, column){
   if (data[currentRow][currentColumn -1] === players.currentPlayer && currentColumn -1 >= 0  ){
       // Increase number in a row count:
       numInARow++
-
+      checkFourinRow(numInARow)
       console.log(numInARow + " in a row")
-
       // Check next one over to the left or right:
       if (data[currentRow][currentColumn -2] === players.currentPlayer && currentColumn -2 >= 0  ){
         numInARow++
+        checkFourinRow(numInARow)
         console.log(numInARow + " in a row")
         if(data[currentRow][currentColumn -3] === players.currentPlayer && currentColumn -3 >= 0 ){
-            weHaveAWinner();
-            if(data[currentRow][currentColumn + 1]=== players.currentPlayer && currentColumn + 1 <7){
-              numInARow++
-              console.log(numInARow + ' in a row');
-            }
+          numInARow++
+          checkFourinRow(numInARow)
         }
       }
+    }
+  }
+
+function checkHorizontalWinL(row, column){
+  if(data[currentRow][currentColumn +1]=== players.currentPlayer && currentColumn +1 >= 0){
+    numInARow++
+    checkFourinRow(numInARow)
+    console.log(numInARow + ' in a row');
+    if(data[currentRow][currentColumn + 2] === players.currentPlayer && currentColumn +2 >= 0){
+      numInARow++
+      checkFourinRow(numInARow)
+      console.log(numInARow + ' in a row');
+      if(data[currentRow][currentColumn + 3] === players.currentPlayer && currentColumn +3 >= 0){
+        numInARow++
+        checkFourinRow(numInARow)
+      }
+    }
   }
 }
 
+function checkFourinRow(numInARow){
+  if(numInARow >= 4 ){
+    weHaveAWinner();
+  }
+}
+// use same code as Horizontal L and R but change the row to +1 and at current colum at end use row.
 function checkVerticalWinner(row, column){
-  // numInARow = 1
-  // currentRow = row
-  // currentColumn = column
-  // // check for match vertical
-  // if(data[currentColumn][currentRow -1 || currentRow +1] === players.currentPlayer && currentRow -1 >=0){
-  //   numInARow++
-  //
-  //   console.log('vert' ,numInARow + " in a row")
-  //
-  //   if(data[currentColumn][currentRow -2 || currentRow +2]=== players.currentPlayer && currentRow -2 >=0){
-  //     numInARow++
-  //     console.log('vert', numInARow + " in a row");
-  //     if(data[currentColumn][currentRow -3 || currentRow + 3] === players.currentPlayer && currentRow -3 >=0 ){
-  //       weHaveAWinner();
-  //     }
-  //   }
-  // }
+  if(data[currentRow +1][currentColumn] === players.currentPlayer && currentRow +1 >=0){
+    numInARow++
+    checkFourinRow()
+    console.log(numInARow +  ' in a row')
+  }
 }
 
 // veritcal checker -> responsible for checking divs in 7's
