@@ -7,8 +7,28 @@ var data = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0]
+  [0, 0, 0,  0, 0, 0, 0]
 ];
+
+
+// select each column by their class
+var $col1 = $('.col-1');
+var $col2 = $('.col-2');
+var $col3 = $('.col-3');
+var $col4 = $('.col-4');
+var $col5 = $('.col-5');
+var $col6 = $('.col-6');
+var $col7 = $('.col-7');
+
+// group each selected column into an array
+var columns = [$col1,$col2,$col3,$col4,$col5,$col6,$col7];
+// console.log(columns)  confirm selection
+  // for(var i = 0; i < columns.length; i++){
+  //   for(var j = (columns.length-1); j >= 0; j++){
+  //     console.log('column is filled ' + $(columns[i][j]).hasClass('filled'))
+  //   }
+  // }
+
 
 // object displaying the players in the game.
 var players = {
@@ -37,6 +57,7 @@ function nextPlayer(){
 }
 
 function handleClick(){
+  $(this).addClass('filled');
   var row = $(this).parent().parent().data("row")
   var column = $(this).parent().data("column")
   console.log("column", column)
@@ -59,6 +80,9 @@ function handleClick(){
   checkHorizontalWinL(row, column)
   checkVerticalWinner(row, column)
   checkDownwardWinner(row,column)
+  checkDownRightDiagonal(row,column)
+  checkDownLeftDiagonal(row, column)
+  checkUpLeftDiagonal(row,column)
   // function to call the next player
   nextPlayer();
   $(this).off('click');
@@ -164,6 +188,67 @@ function checkDownwardWinner(row,column){
       }
     }
   }
+}
+
+function checkDownRightDiagonal(row,column){
+  numInARow = 1
+  currentRow = row
+  currentColumn = column
+  if(currentRow -1 >= 0 && data[currentRow -1][currentColumn - 1] === players.currentPlayer && currentRow -1 <=5){
+    numInARow++
+    checkFourinRow(numInARow);
+    console.log(numInARow + ' in a row');
+    if(currentRow -2 >=0 && data[currentRow -2][currentColumn - 2] === players.currentPlayer && currentRow - 2 <=5){
+      numInARow++
+      checkFourinRow(numInARow)
+      console.log(numInARow + ' in a row')
+      if(currentRow -3 >=0 && data[currentRow -3][currentColumn -3] === players.currentPlayer && currentRow -3 <=5){
+        numInARow++
+        checkFourinRow(numInARow)
+      }
+    }
+  }
+}
+function checkDownLeftDiagonal(row, column){
+  numInARow = 1
+  currentRow = row
+  currentColumn = column
+  if(currentRow - 1 >=0 && data[currentRow -1][currentColumn + 1] === players.currentPlayer && currentRow -1 <=5){
+    numInARow++
+    checkFourinRow(numInARow)
+    console.log(numInARow + ' in a row')
+    if(currentRow -2 >=0 && data[currentRow -2][currentColumn + 2] === players.currentPlayer && currentRow -2 <=5){
+      numInARow++
+      checkFourinRow(numInARow)
+      console.log(numInARow + ' in a row')
+      if(currentRow -3 >= 0 && data[currentRow -3][currentColumn +3] === players.currentPlayer && currentRow -3 <=5){
+        numInARow++
+        checkFourinRow(numInARow)
+      }
+    }
+  }
+}
+function checkUpLeftDiagonal(row,column){
+  numInARow = 1
+  currentRow = row
+  currentColumn = column
+  if(currentRow+1 <=5 && data[currentRow+1][currentColumn +1] === players.currentPlayer && currentRow +1 >=0){
+    numInARow++
+    checkFourinRow(numInARow)
+    console.log(numInARow + ' in a row');
+    if(currentRow +2 <=5 && data[currentRow +2][currentColumn +2] === players.currentPlayer && currentRow +2 >=0){
+      numInARow++
+      checkFourinRow(numInARow)
+      console.log(numInARow + ' in a row')
+      if(currentRow +3 <=5 && data[currentRow +3] [currentColumn +3] === players.currentPlayer && currentRow +3 >=0){
+        numInARow++
+        checkFourinRow(numInARow)
+        console.log(numInARow + ' in a row')
+      }
+    }
+  }
+
+
 }
 function checkFourinRow(numInARow){
   if(numInARow >= 4 ){
