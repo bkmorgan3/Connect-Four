@@ -7,7 +7,7 @@ var data = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0,  0, 0, 0, 0]
+  [0, 0, 0, 0, 0, 0, 0]
 ];
 
 
@@ -24,8 +24,9 @@ var $col7 = $('.col-7');
 var columns = [$col1,$col2,$col3,$col4,$col5,$col6,$col7];
 // console.log(columns)  confirm selection
   // for(var i = 0; i < columns.length; i++){
-  //   for(var j = (columns.length-1); j >= 0; j++){
-  //     console.log('column is filled ' + $(columns[i][j]).hasClass('filled'))
+  //   console.log(columns[i]);
+  //   // for(var j = (columns.length-1); j >= 0; j++){
+  //     console.log(columns[i][j])
   //   }
   // }
 
@@ -80,9 +81,9 @@ function handleClick(){
   checkHorizontalWinL(row, column)
   checkVerticalWinner(row, column)
   checkDownwardWinner(row,column)
+  checkUpLeftDiagonal(row,column)
   checkDownRightDiagonal(row,column)
   checkDownLeftDiagonal(row, column)
-  checkUpLeftDiagonal(row,column)
   checkUpRightDiagonal(row,column)
   // function to call the next player
   nextPlayer();
@@ -171,9 +172,6 @@ function checkVerticalWinner(row, column){
   };
 }
 function checkDownwardWinner(row,column){
-  numInARow = 1
-  currentRow = row
-  currentColumn = column
 
   if(currentRow -1 >= 0 && data[currentRow -1][currentColumn] === players.currentPlayer && currentRow -1 <=5){
     numInARow++
@@ -192,9 +190,7 @@ function checkDownwardWinner(row,column){
 }
 
 function checkDownRightDiagonal(row,column){
-  numInARow = 1
-  currentRow = row
-  currentColumn = column
+
   if(currentRow -1 >= 0 && data[currentRow -1][currentColumn - 1] === players.currentPlayer && currentRow -1 <=5){
     numInARow++
     checkFourinRow(numInARow);
@@ -251,9 +247,7 @@ function checkUpLeftDiagonal(row,column){
 }
 
 function checkUpRightDiagonal(row, column){
-  numInARow = 1
-  currentRow = row
-  currentColumn = column
+
   if(currentRow +1 <=5 && data[currentRow +1][currentColumn -1] === players.currentPlayer && currentRow +1>=0){
     numInARow++
     checkFourinRow(numInARow)
