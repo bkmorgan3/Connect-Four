@@ -83,6 +83,7 @@ function handleClick(){
   checkDownRightDiagonal(row,column)
   checkDownLeftDiagonal(row, column)
   checkUpLeftDiagonal(row,column)
+  checkUpRightDiagonal(row,column)
   // function to call the next player
   nextPlayer();
   $(this).off('click');
@@ -247,9 +248,29 @@ function checkUpLeftDiagonal(row,column){
       }
     }
   }
-
-
 }
+
+function checkUpRightDiagonal(row, column){
+  numInARow = 1
+  currentRow = row
+  currentColumn = column
+  if(currentRow +1 <=5 && data[currentRow +1][currentColumn -1] === players.currentPlayer && currentRow +1>=0){
+    numInARow++
+    checkFourinRow(numInARow)
+    console.log(numInARow + ' in a row')
+    if(currentRow +2 <=5 && data[currentRow +2][currentColumn -2] === players.currentPlayer && currentRow +2 >=0){
+      numInARow++
+      checkFourinRow(numInARow)
+      console.log(numInARow + ' in a row')
+      if(currentRow +3 <=5 && data[currentRow +3][currentColumn -3] === players.currentPlayer && currentRow +3 >=0){
+        numInARow++
+        checkFourinRow(numInARow);
+      }
+    }
+  }
+}
+
+
 function checkFourinRow(numInARow){
   if(numInARow >= 4 ){
     weHaveAWinner();
