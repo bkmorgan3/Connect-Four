@@ -23,12 +23,10 @@ var $col7 = $('.col-7');
 // group each selected column into an array
 var columns = [$col1,$col2,$col3,$col4,$col5,$col6,$col7];
 // console.log(columns)  confirm selection
-  // for(var i = 0; i < columns.length; i++){
-  //   console.log(columns[i]);
-  //   // for(var j = (columns.length-1); j >= 0; j++){
-  //     console.log(columns[i][j])
-  //   }
-  // }
+  for(var i = 0; i < columns.length; i++){
+    console.log(columns[i]);
+
+  }
 
 
 // object displaying the players in the game.
@@ -58,9 +56,17 @@ function nextPlayer(){
 }
 
 function handleClick(){
-  $(this).addClass('filled');
-  var row = $(this).parent().parent().data("row")
-  var column = $(this).parent().data("column")
+  var $targetChecker;
+  for(var i = 5 ; i >= 0 ; i-- ){
+    if (data[i][$(this).parent().data("column")] == 0){
+      $targetChecker = columns[$(this).parent().data("column")].eq(i).children();
+      i=-1
+    }
+  }
+
+  $targetChecker.addClass('filled');
+  var row = $targetChecker.parent().parent().data("row")
+  var column = $targetChecker.parent().data("column")
   console.log("column", column)
   console.log("row", row)
   data[row][column] = players.currentPlayer
@@ -69,12 +75,12 @@ function handleClick(){
   // .data([row==3][col==5])
   //sets color of checker to be played according to current player
   if (players.currentPlayer == players.player1) {
-    $(this).css('backgroundColor', players.player1);
+    $targetChecker.css('backgroundColor', players.player1);
   }
 
   if (players.currentPlayer == players.player2) {
-    $(this).css('backgroundColor', players.player2);
-    $(this).addClass('filled')
+    $targetChecker.css('backgroundColor', players.player2);
+    $targetChecker.addClass('filled')
   }
 
   checkHorizontalWinR(row, column)
@@ -87,7 +93,7 @@ function handleClick(){
   checkUpRightDiagonal(row,column)
   // function to call the next player
   nextPlayer();
-  $(this).off('click');
+  $targetChecker.off('click');
   // horizontalWinCheck();
 }
 
