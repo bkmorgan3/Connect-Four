@@ -22,11 +22,6 @@ var $col7 = $('.col-7');
 
 // group each selected column into an array
 var columns = [$col1,$col2,$col3,$col4,$col5,$col6,$col7];
-// console.log(columns)  confirm selection
-  for(var i = 0; i < columns.length; i++){
-    console.log(columns[i]);
-
-  }
 
 
 // object displaying the players in the game.
@@ -100,8 +95,18 @@ function handleClick(){
 
 
 function resetGame(){
-  $checker.css('backgroundColor', 'white');
-  data = data;
+  $checker.css('backgroundColor', 'white').on('click',handleClick);
+  var $h1 = $('h1').html('Connect Four');
+  data  = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+  ];
+  players.currentPlayer = players.player1
+
 }
 
 
