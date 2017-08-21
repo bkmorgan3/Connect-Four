@@ -12,7 +12,7 @@ I built this game of Connect Four using HTML, CSS, JavaScript, and jQuery.
 The code was written in text editor Atom, versioned in Git using Terminal, and kept online at GitHub.com.
 
 # Screenshot
-![screenshot]('connect-four.png')
+![ScreenShot](connect-four.png)
 
 # MVP:
 -clear winner  
