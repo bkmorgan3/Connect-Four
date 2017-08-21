@@ -11,6 +11,8 @@ Drop one checker at a time into an open space on the board.  The goal is to line
 I built this game of Connect Four using HTML, CSS, JavaScript, and jQuery.
 The code was written in text editor Atom, versioned in Git using Terminal, and kept online at GitHub.com.
 
+# Screenshot
+![screenshot]('connect-four.png')
 
 # MVP:
 -clear winner  
