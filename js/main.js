@@ -89,7 +89,6 @@ function handleClick(){
   // function to call the next player
   nextPlayer();
   $targetChecker.off('click');
-  // horizontalWinCheck();
 }
 
 
